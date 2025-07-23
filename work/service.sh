@@ -81,4 +81,3 @@ echo "$apps" | jq -c '.[]' | while read -r app; do
 done
 
 # sudo journalctl -u client.dsm.papers.extrait.tarico.service -n 20
-

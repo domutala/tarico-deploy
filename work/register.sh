@@ -35,7 +35,12 @@ setup_nginx() {
 
     # Générer SSL avec Certbot
     echo "🔐 Obtention du certificat SSL pour $domain ..."
-    sudo certbot certonly --standalone -d "$domain" -d "www.$domain" --email "$EMAIL" --non-interactive --agree-tos
+    sudo certbot certonly \
+        --standalone \
+        -d "$domain" -d "www.$domain" \
+        --email "$EMAIL" \
+        --non-interactive --agree-tos
+        # --webroot -w /var/www/letsencrypt \
 
     echo "✅ nginx configuré pour $domain"
 }
@@ -52,4 +57,4 @@ done
 
 sudo systemctl restart nginx
 
-sudo certbot certonly --nginx -d api.extrait.tarico.space --email contact@tarico.io --non-interactive --agree-tos
+# sudo certbot certonly --webroot -w /var/www/html -d api.extrait.tarico.space --email contact@tarico.io --non-interactive --agree-tos
